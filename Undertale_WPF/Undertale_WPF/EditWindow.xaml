@@ -1,0 +1,89 @@
+﻿<Window x:Class="Undertale_WPF.EditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Undertale_WPF" xmlns:sdl="http://schemas.sdl.com/xaml"
+        mc:Ignorable="d"
+        Title="EditWindow" Height="400" Width="600">
+    <ScrollViewer>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.ColumnSpan="2">
+                <Label>Name:</Label>
+                <TextBox x:Name="nameEdit" SpellCheck.IsEnabled="False"></TextBox>
+                <Label>Appearances:</Label>
+                <sdl:MultiSelectComboBox x:Name="appearancesEditCB" DataContext="{Binding ItemsCBAppearance}" ItemsSource="{Binding Items}" />
+                <Label>Role:</Label>
+                <TextBox x:Name="roleEdit"  SpellCheck.IsEnabled="False"></TextBox>
+                <Label>Status:</Label>
+                <TextBox x:Name="statusEdit"  SpellCheck.IsEnabled="False" IsReadOnly="True" Text="Main Character"></TextBox>
+                <Label>Max Health:</Label>
+                <TextBox x:Name="healthEdit" PreviewTextInput="IsNumerical" MaxLength="4"></TextBox>
+                <Label>Ability / Abilities:</Label>
+                <Label>Ability Name:</Label>
+                <TextBox x:Name="abilityName" KeyDown="addAbilityName_KeyDown"></TextBox>
+                <Label>Ability Feature:</Label>
+                <TextBox x:Name="abilityFeature" KeyDown="addAbilityFeature_KeyDown"></TextBox>
+                <Button Width="200" Click="addAbilityName_OnClick">Add Ability</Button>
+                <Button Width="200" Click="addAbilityFeature_OnClick">Add Feature</Button>
+                <Button Width="200" Click="clearListSelection">Clear Item Selection</Button>
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" FontWeight="Bold">Abilities:</Label>
+                    <Label Grid.Row="0" Grid.Column="1" FontWeight="Bold">Features:</Label>
+                    <ListBox x:Name="abilityNameLB" SelectionChanged="abilityNameLB_SelectionChanged" Height="150"  Margin="0,0,5,0" Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Stretch">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding}" Grid.Column="0"/>
+                                    <Button Content="Remove" Click="removeAbility_Click" Grid.Column="1"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <ListBox x:Name="abilityFeatureLB" SelectionChanged="abilityFeatureLB_SelectionChanged" Height="150" Margin="5,0,0,0" Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Stretch">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding}" Grid.Column="0"/>
+                                    <Button Content="Remove" Click="removeFeature_Click" Grid.Column="1"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+                <Button Margin="5" Width="100">SAVE</Button>
+                <Button Margin="5" Width="100">RESET</Button>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+    
+</Window>
