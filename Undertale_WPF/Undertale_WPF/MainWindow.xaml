@@ -45,8 +45,8 @@
             <!--// REMOVE THE COLUMNSPAN AND JUST ADD IT FOR THE LISTBOX AND MAYBE RADIOBUTTONS
                 // THE REST SHOULD THEN BE ADDED TO 2 DIFFERENT COLUMNS SO THE TEXTBOXES AREN'T AS LONG-->
             <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="5,0,0,0">
-                <RadioButton x:Name="radioBtnAll" Margin="0,10,0,0" Click="radioBtnAll_Click">All Characters</RadioButton>
-                <RadioButton x:Name="radioBtnMain" Click="radioBtnMain_Click">Main Character</RadioButton>
+                <!--<RadioButton x:Name="radioBtnAll" Margin="0,10,0,0" Click="radioBtnAll_Click">All Characters</RadioButton>-->
+                <RadioButton x:Name="radioBtnMain" Margin="0,10,0,0" Click="radioBtnMain_Click">Main Character</RadioButton>
                 <RadioButton x:Name="radioBtnNpc" Click="radioBtnNpc_Click">NPC</RadioButton>
                 <RadioButton x:Name="radioBtnVendor" Click="radioBtnVendor_Click">Vendor</RadioButton>
                 <Separator Margin="10"></Separator>
