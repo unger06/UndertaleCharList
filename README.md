@@ -20,6 +20,9 @@ Undertale has many different and unique characters. Doesn't matter if they are a
 The user should also be able to add, edit, delete and view different characters using a WPF application and a Website.
 > **Note:** because of time problems and the underestimated project size the *Website* can *only display* the characters.
 
+### 2.3) Structure <br>
+<img src="/images/Project_Structure.png" heigth="200"><br>
+
 ## 3) How does the Software-Design look?
 ### 3.1) Spring Boot API
 <u>*Programming language:*</u> Java (Maven)
@@ -29,8 +32,8 @@ The user should also be able to add, edit, delete and view different characters 
 #### 3.1.1)  Functionality / Structure
 The API acts like a connector between the application in the Frontend and the MongoDB database in the Backend. The application sends requests in the form of HTTP-Requests with the path (used for connecting to the different collections) and the request method (GET --> View / POST --> Add / PUT --> Edit / DELETE --> Delete) attached to it. 
 
-**Project-Structure:**
-![API-Project Structure](https://lh3.googleusercontent.com/9ukwAEFvpG7lGeo7m8iyiKWlwL_V8J9kQd_Qj2DQcDVo3Jge2-rA97rdHf8WNhyieDeHgIsdOv0bteJu3B56jxw195fDIDh7TzXImpmNvP2RFLWBfxK4aJCh9HJY6yb8CWfXos6gRTDvACFKCraiXOC-LO_lO0p2XwCBk_89ZLljugQg_7_RUS9ZaYCMmyqcqofnupgQx2En4nv-Fdn-yrSL6SXAo64Akwi6PF_2nrMTJrSRoc8yVTPIlN5YEul7oXFEDQdJ-eK4BtwM7NioC-uCpMYGML2gBWGCLDhW60GguDuiFsaIAviAKuRsizHJKlVpgMTlpLRl1VqOraca6R9BL1kxqlGLMJN8ZkmtwpzBKJWc0eRd7S88zzVbsqYoH5IurZo13GToi97aeg5-HE6SGu9AB2_bD2Msso_JmQlM8DY1WWCYPp6iOUZ4vBlq97pTS7RyPC2IdesGltAyEXAocNBETr89TD4ABAawo1g9HmjABLBFKGMue6OzofXVxUUiHFXAIe-kjfefC1sBrzv2uZBNANHLme5-wpXhGZ0NjI7hFDnhWzkqbifBv9Bd-jz7XZ5IMiUAxIgTm-nGG0WRa_ik4CQQMCUuegqj5FtVIIQ-iAUnP2u83kHm3nz5DjvayluqsoQlORBsJF72RT8NwHaGjbm9nwEPlfG1Vo3oj8xTIVcwIT-K_VSy3LR3NJ_kaYTKYA2L4UgxqnqDTQBqaO59UnYTy_Iv65HTqIN9LpCT8qSffJdKp_29zrw2OXZNy1-hfWQYig4gaBII9kRdM_LgHiaR3cWO4Ku1BcvwOFDKIy147r261xyyVA-vx0sDL3bevlxwCZ7lwVhwnkNq-uE2-F-_6K-3va4KswYeDjbEpPm7B7tXtxP_kgU6IVSq8RhQwruYFYw_LfaAy7JMO_vAj6HFTxj7hQW0K6-r=w411-h791-s-no?authuser=0 =200x)
+**Project-Structure:** <br>
+<img src="/images/API_ProjectStructure.png" width="200"><br>
 This project has 3 different types of characters. Every single one has it's own Java Class, Controller, Repository and Service. In the *pom.xml* are all of the dependencies located the API needs to work correctly. The *application.properties* is used for changing the port of the API and also for specifying the MongoDB Atlas connection string.
 > The "AllCharController" and "AllCharService" are working but aren't used in the WPF-application
 
