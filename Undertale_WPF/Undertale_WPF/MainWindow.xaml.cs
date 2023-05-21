@@ -39,6 +39,9 @@ namespace Undertale_WPF
 
             List<string> itemsAppearance = new List<string> { "Ruins", "Snowdin", "Waterfall", "Hotland", "The Core", "New Home" };
             ItemsCBAppearance = new ItemsCB(itemsAppearance);
+            mainCharControls.Visibility = Visibility.Collapsed;
+            npcControls.Visibility = Visibility.Collapsed;
+            vendorControls.Visibility = Visibility.Collapsed;
 
             DataContext = this;    
         }
