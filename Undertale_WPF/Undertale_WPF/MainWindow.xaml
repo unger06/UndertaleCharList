@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sdl="http://schemas.sdl.com/xaml"
         mc:Ignorable="d"
-        Title="Undertale Character List" Height="600" Width="1000">
+        Title="Undertale Character List" Height="600" Width="1000"
+        Icon="logo_heart.png">
     <ScrollViewer>
         <Grid Margin="10">
 

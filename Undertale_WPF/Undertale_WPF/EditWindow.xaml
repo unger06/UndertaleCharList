@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Undertale_WPF" xmlns:sdl="http://schemas.sdl.com/xaml"
         mc:Ignorable="d"
-        Title="EditWindow" Height="400" Width="600">
+        Title="Main Character" Height="400" Width="600"
+        Icon="logo_heart.png">
     <ScrollViewer>
         <Grid Margin="10">
             <Grid.RowDefinitions>
