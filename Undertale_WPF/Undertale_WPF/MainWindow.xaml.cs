@@ -118,7 +118,6 @@ namespace Undertale_WPF
         private async void radioBtnMain_Click(object sender, RoutedEventArgs e)
         {
             var response = await client.GetAsync("http://localhost:6969/char/mainChar");
-            //var settings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
 
             if (response.IsSuccessStatusCode)
             {
@@ -127,24 +126,15 @@ namespace Undertale_WPF
 
                 if (mainChars != null)
                 {
-                    // FOR lstChars AND NOT FOR THE LISTVIEW //
-                    //lstChars.Items.Clear();
                     myListView.ItemsSource = mainChars;
 
                     mainCharControls.Visibility = Visibility.Visible;
                     npcControls.Visibility = Visibility.Collapsed;
                     vendorControls.Visibility = Visibility.Collapsed;
-                    // FOR lstChars AND NOT FOR THE LISTVIEW //
-                    /*foreach (MainChar mc in mainChars)
-                    {
-                        lstChars.Items.Add(mc.Name);
-                    }*/
                 }
             }
             else
             {
-                // FOR lstChars AND NOT FOR THE LISTVIEW //
-                //lstChars.Items.Add("Couldn't get Data!");
                 myListView.Items.Add("Couldn't get Data!");
             }
         }
@@ -469,9 +459,6 @@ namespace Undertale_WPF
                         break;
                     }
             }
-            
-
-
         }
 
         private MainChar buildMainChar()
