@@ -1,0 +1,175 @@
+﻿<Window x:Class="Undertale_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sdl="http://schemas.sdl.com/xaml"
+        mc:Ignorable="d"
+        Title="Undertale Character List" Height="600" Width="1000"
+        Icon="logo_heart.png">
+    <ScrollViewer>
+        <Grid Margin="10">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ListView x:Name="myListView" Grid.Row="0" Grid.ColumnSpan="2" MouseDoubleClick="myListView_MouseDoubleClick" Height="200">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" />
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Role" DisplayMemberBinding="{Binding Role}" />
+                        <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}" />
+                        <GridViewColumn Header="Actions">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Remove" Click="DeleteItem_Click" Tag="{Binding Id}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <!-- Add more columns as needed -->
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <!--<Label>Characters</Label>-->
+            <!--<ListBox Grid.Row="1" x:Name="lstChars"/>-->
+            <!--<ListBox Grid.Row="1" x:Name="lstChars" MouseDoubleClick="lstChars_MouseDoubleClick"/>-->
+
+            <!--// REMOVE THE COLUMNSPAN AND JUST ADD IT FOR THE LISTBOX AND MAYBE RADIOBUTTONS
+                // THE REST SHOULD THEN BE ADDED TO 2 DIFFERENT COLUMNS SO THE TEXTBOXES AREN'T AS LONG-->
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="5,0,0,0">
+                <!--<RadioButton x:Name="radioBtnAll" Margin="0,10,0,0" Click="radioBtnAll_Click">All Characters</RadioButton>-->
+                <RadioButton x:Name="radioBtnMain" Margin="0,10,0,0" Click="radioBtnMain_Click">Main Character</RadioButton>
+                <RadioButton x:Name="radioBtnNpc" Click="radioBtnNpc_Click">NPC</RadioButton>
+                <RadioButton x:Name="radioBtnVendor" Click="radioBtnVendor_Click">Vendor</RadioButton>
+                <Separator Margin="10"></Separator>
+
+                <!--// CONTROLS TO ADD A NEW MAIN CHARACTER //-->
+                <StackPanel x:Name="mainCharControls" Margin="10,0,10,0">
+                    <Label>Name: *</Label>
+                    <TextBox x:Name="nameMC"></TextBox>
+                    <Label>Appearances: *</Label>
+                    <sdl:MultiSelectComboBox x:Name="AppearancesMC" SelectedItems="{Binding Appearances, Mode=TwoWay}" ItemsSource="{Binding Items}" DataContext="{Binding ItemsCBAppearance}" />
+                    <Label>Role: *</Label>
+                    <TextBox x:Name="roleMC"></TextBox>
+                    <Label>Status:</Label>
+                    <TextBox x:Name="statusMC" SpellCheck.IsEnabled="False" IsReadOnly="True" Text="Main Character"></TextBox>
+                    <Label>Max Health: *</Label>
+                    <TextBox x:Name="healthMC" PreviewTextInput="IsNumerical" MaxLength="4"></TextBox>
+                    <!--// FIND A SOLUTION THAT LETS THE USER ADD MORE FEATURES TO ONE ABILITY
+                        // IF ONE ABILITY GETS ADDED (WITH A BUTTON) IS SHOULD BE ADDED TO THE LIST BELOW
+                        // ADD ALL DIFFERENT ABILITIES TO THE MAIN CHARACTER AT THE END-->
+                    <Label>Ability / Abilities:</Label>
+                    <Label>Ability Name:</Label>
+                    <TextBox x:Name="abilityNameMC" KeyDown="abilityName_KeyDown"></TextBox>
+                    <Label>Ability Feature:</Label>
+                    <TextBox x:Name="abilityFeatureMC" KeyDown="abilityFeature_KeyDown"></TextBox>
+                    <Button Width="200" Click="abilityName_OnClick">Add Ability</Button>
+                    <Button Width="200" Click="abilityFeature_OnClick">Add Feature</Button>
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" FontWeight="Bold">Abilities:</Label>
+                        <Label Grid.Row="0" Grid.Column="1" FontWeight="Bold">Features:</Label>
+                        <ListBox x:Name="abilityNameLB" Height="150" SelectionChanged="abilityNameLB_SelectionChanged" Margin="0,0,5,0" Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Stretch">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="{Binding}" Grid.Column="0"/>
+                                        <Button Content="Remove" Click="removeAbility_Click" Grid.Column="1"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <ListBox x:Name="abilityFeatureLB" Height="150" Margin="5,0,0,0" Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Stretch">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="{Binding}" Grid.Column="0"/>
+                                        <Button Content="Remove" Click="removeFeature_Click" Grid.Column="1"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                    <Button Click="PostItem_Click" Grid.ColumnSpan="2" Width="200">ADD CHARACTER</Button>
+
+        
+                    <!--// SYNSFUNCTION COMBOBOX NOT WORKING BECAUSE OF LICENSING PROBLEMS (details in the documentary) //-->
+                    <!--<synsfunction:ComboBoxAdv>
+                    <synsfunction:ComboBoxItemAdv Content="Home"/>
+                    <synsfunction:ComboBoxItemAdv Content="Snowdin"/>
+                    <synsfunction:ComboBoxItemAdv Content="Waterfall"/>
+                    <synsfunction:ComboBoxItemAdv Content="Hotland"/>
+                    <synsfunction:ComboBoxItemAdv Content="The Core"/>
+                    <synsfunction:ComboBoxItemAdv Content="New Home"/>
+                    <synsfunction:ComboBoxItemAdv Content="Mt. Ebott"/>
+                </synsfunction:ComboBoxAdv>-->
+
+                    <!--// NORMAL COMBOBOX NOT WORKING FOR MULTISELECT //-->
+                    <!--<ComboBox>
+                    <ComboBoxItem>Ruins</ComboBoxItem>
+                    <ComboBoxItem>Snowdin</ComboBoxItem>
+                    <ComboBoxItem>Waterfall</ComboBoxItem>
+                    <ComboBoxItem>Hotland</ComboBoxItem>
+                    <ComboBoxItem>The Core</ComboBoxItem>
+                    <ComboBoxItem>New Home</ComboBoxItem>
+                    <ComboBoxItem>Mt. Ebott</ComboBoxItem>
+                </ComboBox>-->
+                </StackPanel>
+
+                <!--// CONTROLS TO ADD A NEW NPC //-->
+                <StackPanel x:Name="npcControls" Margin="10,0,10,0">
+                    <Label>Name: *</Label>
+                    <TextBox x:Name="nameNPC"></TextBox>
+                    <Label>Appearances: *</Label>
+                    <sdl:MultiSelectComboBox x:Name="AppearancesNPC" SelectedItems="{Binding Appearances, Mode=TwoWay}" ItemsSource="{Binding Items}" DataContext="{Binding ItemsCBAppearance}" />
+                    <Label>Role: *</Label>
+                    <TextBox x:Name="roleNPC"></TextBox>
+                    <Label>Status:</Label>
+                    <TextBox x:Name="statusNPC" SpellCheck.IsEnabled="False" IsReadOnly="True" Text="NPC"></TextBox>
+                    <Button Click="PostItem_Click" Grid.ColumnSpan="2" Width="200">ADD CHARACTER</Button>
+                </StackPanel>
+
+                <!--// CONTROLS TO ADD A NEW VENDOR //-->
+                <StackPanel x:Name="vendorControls" Margin="10,0,10,0">
+                    <Label Grid.ColumnSpan="2" Foreground="Red" FontSize="20">! NOT FINISHED !</Label>
+                    <Label>Name: *</Label>
+                    <TextBox x:Name="nameV"></TextBox>
+                    <Label>Appearances: *</Label>
+                    <sdl:MultiSelectComboBox x:Name="AppearancesV" SelectedItems="{Binding Appearances, Mode=TwoWay}" ItemsSource="{Binding Items}" DataContext="{Binding ItemsCBAppearance}" />
+                    <Label>Role: *</Label>
+                    <TextBox x:Name="roleV"></TextBox>
+                    <Label>Status:</Label>
+                    <TextBox x:Name="statusV" SpellCheck.IsEnabled="False" IsReadOnly="True" Text="Vendor"></TextBox>
+                    
+                    <Button Click="PostItem_Click" Grid.ColumnSpan="2" Width="200">ADD CHARACTER</Button>
+                </StackPanel>
+            </StackPanel>
+
+            
+        </Grid>
+    </ScrollViewer>
+</Window>
