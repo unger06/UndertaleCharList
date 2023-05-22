@@ -28,7 +28,7 @@ const createCharacterCard = (character) => {
                 <p><u>Appearances:</u> <span class="appearances"><br>${character.appearances.join(', ')}</span></p>
                 <p><u>Role:</u> <span class="role"><br>${character.role}</span></p>
                 <p><u>Status:</u> <span class="status"><br>${character.status}</span></p>
-                <h3>Abilities:</h3>
+                <h3>Wares:</h3>
                 <ul class="wares">          
     `;
     
