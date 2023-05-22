@@ -21,6 +21,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <StackPanel Grid.ColumnSpan="2">
+                <Label Grid.ColumnSpan="2" Foreground="Red" FontSize="20">! NOT FINISHED !</Label>
                 <Label>Name: *</Label>
                 <TextBox x:Name="nameNpc"></TextBox>
                 <Label>Appearances: *</Label>

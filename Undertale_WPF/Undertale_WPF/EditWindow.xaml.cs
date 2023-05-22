@@ -410,6 +410,11 @@ namespace Undertale_WPF
             abilityFeature.Clear();
         }
 
+        private void UpdateItem_Click(object sender, RoutedEventArgs e)
+        {
+            _ = UpdateItemAsync(BuildFinalChar());
+        }
+
         private async Task UpdateItemAsync(MainChar mainChar)
         {
 
@@ -434,9 +439,9 @@ namespace Undertale_WPF
             }
         }
 
-        private void BuildFinalChar()
+        private MainChar BuildFinalChar()
         {
-            /*
+            
             List<string> appearances = new List<string>();
 
             foreach (string appearance in appearancesEditCB.SelectedItems)
@@ -462,7 +467,7 @@ namespace Undertale_WPF
 
 
             return mainChar;
-            */
+            
         }
 
         
