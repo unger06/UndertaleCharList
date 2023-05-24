@@ -1,5 +1,5 @@
 # Project - Undertale Character List 
-
+> **DISCLAIMER:** This entire project was intended and is used as a school project. Everything having a connection to the game "UNDERTALE" belongs to Toby Fox.
 ## 1) What is "UNDERTALE"?
 "Undertale" is a RPG-like game where you play as a human who has fallen into a deep hole and woke up in an underground world full of monsters. 
 
