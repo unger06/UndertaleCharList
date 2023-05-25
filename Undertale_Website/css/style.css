@@ -29,6 +29,7 @@ body {
   /* text-align: center; */
   font-size: 34px;
   margin-top: 0;
+  font-weight: normal;
 }
   
 .card p {
@@ -41,6 +42,7 @@ body {
   font-size: 24px;
   margin-bottom: 5px;
   margin-top: 50px;
+  font-weight: normal;
 }
 
 .card ul {
@@ -54,7 +56,17 @@ body {
   margin-bottom: 10px;
 }
 
+.infoCon {
+  margin: 1em;
+}
 
+.infoCon h1, .infoCon h2{
+  font-weight: normal;
+}
+
+.infoCon p {
+  font-size: 16pt;
+}
 
 /* NAVBAR */
 .undertale-navbar {
