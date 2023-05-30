@@ -24,11 +24,12 @@ The user should also be able to add, edit, delete and view different characters 
 The API acts like a connector between the application in the Frontend and the MongoDB database in the Backend. The application sends requests in the form of HTTP-Requests using a path (used for connecting to the different collections) and the request method (GET --> View / POST --> Add / PUT --> Edit / DELETE --> Delete) attached to it. 
 
 #### 3.1.2) Structure:
-![API-Project Structure](images/API_ProjectStructure.png =200x)
-This project has 3 different types of characters. Every single one has it's own Java Class, Controller, Repository and Service. In the *pom.xml* are all of the dependencies located the API needs to work correctly. The *application.properties* is used for changing the port of the API and also for specifying the MongoDB Atlas connection string.
-> The "AllCharController" and "AllCharService" are working but aren't used in any application
+<img alt="API-Project Structure" src="images/API_ProjectStructure.png" width="250" />
+This project has 3 different types of characters. Every single one has it's own Java Class, Controller, Repository and Service. In the *pom.xml* are all of the dependencies located the API needs to work correctly. The *application.properties* is used for changing the port of the API and also for specifying the MongoDB Atlas connection string.<br>
+> **Note:** The "AllCharController" and "AllCharService" are working but aren't used in any application
 
 **Main Character:**
+<br>
 **MainChar.cs:**
 ```java
 @Document(collection = "mainCharacters")  
@@ -64,7 +65,7 @@ public static class Ability {
 ...
 ```
 Every Ability has a name and a list of features. This class exists inside MainChar.cs.
-<br>
+<br><br>
 **MainCharRepo.cs:**
 ```java
 @RepositoryRestResource(collectionResourceRel = "mainCharacters", path = "char/mainChar")  
@@ -73,7 +74,7 @@ public interface MainCharRepo extends MongoRepository<MainChar, String> {
 }
 ```
 All of the main characters get saved in this Repository. The collection *(where the items are stored in the database)* and path *(the same as in the Controller)* need to be specified. Instead of "findById()" I changed it so the API finds the item by the name.
-<br>
+<br><br>
  **MainCharService.cs:**
 ```java
 @Service  
@@ -101,7 +102,7 @@ public class MainCharService {
 }
 ```
 The "@Service"-Annotation is used for identifying what class should be used as the Service. This service passes the different actions on to the repository, which then carries out the actions using the integrated *MongoRepository* class. 
-<br>
+<br><br>
 **MainCharController.cs:**
 ```java
 @RestController  
@@ -152,8 +153,8 @@ public class MainCharController {
 ```
 The "@RestController"-Annotation is used for identifying what class should be used as the Controller. If the "@RequestMapping"-annotation is used for the entire class, the API only accepts requests for this Controller if the path is *"localhost:< port >/char/mainChar ..."*. Every other path required for viewing, editing, deleting and adding, specified in the different "@...Mapping(" ")"-annotations are getting added to the current path and are not a stand-alone path. If the user wants to get a specific item with the name *"Hugo"* the HTTP-Request path should look something like this: **localhost:8080/char/mainChar/Hugo**
 <br>
-
-**NPC:**
+<br>
+**NPC:**<br>
 **Npc.cs:**
 ```java
 @Document(collection = "npc")  
@@ -174,8 +175,8 @@ public class Npc {
 ```
 With the annotation *"@Document(collection = "npc")"*, the API knows where the data of the document is stored. Every NPC also gets the internal ID from MongoDB *("@MongoId")*. For every attribute exists a getter and setter below the Constructors.
 <br>
-
-**Vendor:**
+<br>
+**Vendor:**<br>
 **Vendor.cs:**
 ```java
 @Document(collection = "vendors")  
@@ -211,9 +212,10 @@ With the annotation *"@Document(collection = "vendors")"*, the API knows where t
 > Editing doesn't work!
 
 #### 3.2.2) Structure
-Insert image
+<img alt="WPF-Project Structure" src="images/WPF_ProjectStructure.png" width="250" />
 The WPF-Application consists of 2 different windows, the MainWindow and the EditWindow. There also exists 3 different classes for the different character types, similar to the classes in the API. The class *"ItemsCB.cs"* is used for the values of the ComboBox.
-
+<br>
+<br>
 **MainWindow.xaml.cs:**
 ```C#
 public MainWindow() {
@@ -298,7 +300,8 @@ public async Task PostItemAsync(object character) {
 ...
 ```
 The same concept as deleting a character also is used for adding an object to the database. This time the entire character object gets serialized and added to the request. Only the character type for their specific Endpoint gets added to the path. Instead of a DELETE request the WPF now sends a POST request to the API.
-
+<br>
+<br>
 **EditWindow.xaml.cs:**
 > This window only gets used for *main characters*. For the NPC (and in the future for the vendor) a new edit window gets created.
 
@@ -344,9 +347,10 @@ The update function works similar to the other requests. The BaseAdress to the A
 After the server is started (locally) the user should be able to access the Website via "http://localhost:5500". It should automatically route to the "Home" of the website. There the user can switch between what characters they want to see using the buttons located in the navbar. If they click on any character, the corresponding HTML-File gets opened where every single attribute of the characters get displayed.
 
 #### 3.3.2) Structure
-Insert Image
+<img alt="Website-Project Structure" src="images/Website_ProjectStructure.png" width="250" />
 The Website consists of different HTML-files (index.html + about.html + a file for every character type), a style.css and many different JavaScript-files, which are being used for showing the character information. A custom font, that was also used in the official game, got added to the project.
-
+<br>
+<br>
 **mainChar.js:**
 ```javascript
 const apiUrl = 'http://localhost:6969/char/mainChar';
@@ -370,7 +374,7 @@ const getMainCharacters = async () => {
 	}
 };
 ```
- This function sends a get request to the API and displays the data on the website in the div with the ID "character-card". For each character gotten from the database a seperate character card gets created and added to the div.
+This function sends a get request to the API and displays the data on the website in the div with the ID "character-card". For each character gotten from the database a seperate character card gets created and added to the div.
 
 ```javascript
 const createCharacterCard = (character) => {
