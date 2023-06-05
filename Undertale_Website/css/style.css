@@ -68,6 +68,10 @@ body {
   font-size: 16pt;
 }
 
+.about-section p {
+  font-size: 16pt;
+}
+
 /* NAVBAR */
 .undertale-navbar {
   display: flex;
