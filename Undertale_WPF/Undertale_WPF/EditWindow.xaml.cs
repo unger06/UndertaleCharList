@@ -464,12 +464,7 @@ namespace Undertale_WPF
             {
                 MainChar.Ability ability = new MainChar.Ability("", new List<string>());
             }
-
-
-            return mainChar;
-            
+            return mainChar;   
         }
-
-        
     }
 }

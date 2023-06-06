@@ -60,10 +60,8 @@ namespace Undertale_WPF
                     {
                         // Get the selected item from the ListView
                         var selectedItem = myListView.SelectedItem;
-
                         // Create a new instance of the edit window
                         var editWindow = new EditWindow(selectedItem);
-
                         // Show the edit window
                         editWindow.ShowDialog();
                         break;
@@ -329,13 +327,9 @@ namespace Undertale_WPF
 
         private void abilityNameLB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Get the selected item from the ListBox
             string selectedItem = abilityNameLB.SelectedItem as string;
-
-            // Find the corresponding item in the List
             var item = abilities.FirstOrDefault(x => x.Name == selectedItem);
 
-            // Display the item's information in the other ListBox
             if (item != null)
             {
                 abilityFeatureLB.ItemsSource = item.Features;
